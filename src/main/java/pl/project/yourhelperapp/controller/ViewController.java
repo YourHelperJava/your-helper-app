@@ -1,7 +1,10 @@
-package pl.project.yourhelperapp;
+package pl.project.yourhelperapp.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import pl.project.yourhelperapp.model.Offer;
 
 @Controller
 public class ViewController {
@@ -17,7 +20,8 @@ public class ViewController {
     }
 
     @GetMapping("/addNewOffer")
-    public String getAddNewOffer() {
+    public String getAddNewOffer(Model model){
+        model.addAttribute("offer", new Offer());
         return "addNewOffer";
     }
 

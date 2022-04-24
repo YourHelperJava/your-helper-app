@@ -42,21 +42,21 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="#">
+            <a class="nav-link" th:href="@{/offersList}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Home</span></a>
         </li>
 
         <!-- Nav Item - Offers -->
         <li class="nav-item">
-            <a class="nav-link" href='#'>
+            <a class="nav-link" th:href="@{/offersList}">
                 <i class="fas fa-users"></i>
                 <span>Oferty aktualne</span></a>
         </li>
 
         <!-- Nav Item - Reserved Offers -->
         <li class="nav-item">
-            <a class="nav-link" href='#'>
+            <a class="nav-link" th:href="@{/reservedOffersList}">
                 <i class="fas fa-clipboard-list"></i>
                 <span>Oferty zarezerwowane</span></a>
         </li>
@@ -64,7 +64,7 @@
 
         <!-- Nav Item - Adding offers -->
         <li class="nav-item">
-            <a class="nav-link" href='#'>
+            <a class="nav-link" th:href="@{/addNewOffer}">
                 <i class="fas fa-laptop"></i>
                 <span>Dodanie oferty</span></a>
         </li>
@@ -152,7 +152,7 @@
 
             </nav>
             <!-- End of Topbar -->
-
+            <form action="#" th:action="@{/addNewOffer}" method="post" th:object="${offer}">
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
@@ -162,31 +162,42 @@
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <div class="form-group row">
-                                    <label for="title" class="col-2 col-form-label">Tytuł</label>
+                                    <label class="col-2 col-form-label">Tytuł</label>
                                     <div class="col-10">
-                                        <input class="form-control" type="text" placeholder="uzupełnij tytuł">
+                                        <input class="form-control" type="text" th:field="*{title}" placeholder="uzupełnij tytuł">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="localization" class="col-2 col-form-label">Lokalizacja</label>
-                                    <div class="col-10">
-                                        <input class="form-control" type="text" placeholder="uzupełnij lokalizację">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="phoneNumber" class="col-2 col-form-label">Numer telefonu</label>
+                                    <label class="col-2 col-form-label">Lokalizacja</label>
                                     <div class="col-10">
                                         <input class="form-control" type="text"
-                                               placeholder="uzupełnij numer telefonu do kontaktu">
+                                               th:field="*{localization}" placeholder="uzupełnij lokalizację">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-2 col-form-label">Data</label>
+                                    <div class="col-10">
+                                        <input class="form-control" type="text"
+                                               th:field="*{date}"
+                                               placeholder="uzupełnij datę">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-2 col-form-label">Imię i Nazwisko</label>
+                                    <div class="col-10">
+                                        <input class="form-control" type="text"
+                                               th:field="*{nameAndSurname}"
+                                               placeholder="uzupełnij imię i nazwisko">
                                     </div>
                                 </div>
 
 
                                 <div class="form-group row">
-                                    <label for="description" class="col-2 col-form-label">Krótki opis:</label>
+                                    <label class="col-2 col-form-label">Krótki opis:</label>
                                     <div class="col-10">
-                                <textarea class="form-control" rows="5" id="start"
+                                <textarea class="form-control" rows="5"
+                                          th:field="*{description}"
                                           placeholder="Napisz krótki opis w czym chcesz pomoć.."></textarea>
                                     </div>
                                 </div>
@@ -196,12 +207,12 @@
                         </div>
                     </div>
                 </div>
-                <input class="btn btn-success pull-left" type="submit" value="Wyślij" id="searchButton"/>
+                <input class="btn btn-success pull-left" type="submit" value="Wyślij"/>
 
 
             </div>
             <!-- /.container-fluid -->
-
+            </form>
         </div>
         <!-- End of Main Content -->
 
