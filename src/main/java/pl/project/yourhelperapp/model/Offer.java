@@ -28,7 +28,17 @@ public class Offer {
         this.date = date;
         this.description = description;
     }
-
+    @Override
+    public String toString() {
+        return "Offer{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", nameAndSurname='" + nameAndSurname + '\'' +
+                ", localization='" + localization + '\'' +
+                ", date='" + date + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
     public Long getId() {
         return id;
     }
